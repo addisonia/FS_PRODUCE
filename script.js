@@ -1,19 +1,24 @@
-// Ensure the title stays visible and properly sized
+// script.js
+
+// adjustTitleSize: ensures the title stays visible and properly sized
 function adjustTitleSize() {
+    // comment: select elements
     const title = document.querySelector('.main-title');
     const container = document.querySelector('.container-fluid');
     let fontSize = 15;
     
+    // comment: set initial font size
     title.style.fontSize = fontSize + 'vw';
     
+    // comment: shrink font if it's too big
     while (title.scrollWidth > container.offsetWidth * 0.9 && fontSize > 1) {
-        fontSize -= 0.5;
-        title.style.fontSize = fontSize + 'vw';
+      fontSize -= 0.5;
+      title.style.fontSize = fontSize + 'vw';
     }
-}
-
-// Generate an exponential gradient with chroma.js
-function applyExponentialGradient() {
+  }
+  
+  // optional gradient function using chroma.js
+  function applyExponentialGradient() {
     const overlay = document.querySelector('.gradient-overlay');
     if (!overlay) return;
     
@@ -23,18 +28,19 @@ function applyExponentialGradient() {
     const colorStops = [];
     
     for (let i = 0; i <= steps; i++) {
-        // example exponent of 2
-        const t = Math.pow(i / steps, 2);
-        colorStops.push(darkColor.mix(lightColor, t).css());
+      // example exponent of 2
+      const t = Math.pow(i / steps, 2);
+      colorStops.push(darkColor.mix(lightColor, t).css());
     }
     
     const gradientStr = `linear-gradient(to bottom, ${colorStops.join(', ')})`;
     overlay.style.background = gradientStr;
-}
-
-// Run on load and resize
-window.addEventListener('load', () => {
+  }
+  
+  // run on load and on resize
+  window.addEventListener('load', () => {
     adjustTitleSize();
-    applyExponentialGradient();
-});
-window.addEventListener('resize', adjustTitleSize);
+    applyExponentialGradient(); // remove if you don't need it
+  });
+  window.addEventListener('resize', adjustTitleSize);
+  
