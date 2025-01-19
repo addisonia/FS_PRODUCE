@@ -17,6 +17,35 @@ function adjustTitleSize() {
   }
 }
 
+
+// make sure the link and the album scroller exist
+const arrowLink = document.querySelector('.scroll-down-link');
+if (arrowLink) {
+  arrowLink.addEventListener('click', (e) => {
+    // prevent normal jump
+    e.preventDefault();
+    
+    // find the album scroller
+    const scroller = document.querySelector('.album-scroller');
+    if (!scroller) return;
+    
+    // get its bounding rectangle
+    const rect = scroller.getBoundingClientRect();
+    // figure out the vertical midpoint of .album-scroller
+    const midpoint = rect.top + window.pageYOffset - (window.innerHeight / 2) + (rect.height / 2);
+
+    // smoothly scroll to that position
+    window.scrollTo({
+      top: midpoint,
+      behavior: 'smooth'
+    });
+  });
+}
+
+
+
+//*********************************************************\\
+
 // optional function using chroma.js for gradient
 function applyExponentialGradient() {
   const overlay = document.querySelector('.gradient-overlay');
@@ -74,7 +103,7 @@ function randomizeWaves() {
     applyRandomWave(wave);
   });
   
-  // now pair up wave2 with wave1 in top, and wave2 with wave1 in bottom
+  // pair up wave2 with wave1 in top, and wave2 with wave1 in bottom
   const waveTop1 = document.querySelector('.wave.wave-top:not(.wave2)');
   const waveTop2 = document.querySelector('.wave.wave2.wave-top');
   if (waveTop1 && waveTop2) {

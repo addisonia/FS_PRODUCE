@@ -21,6 +21,35 @@ body {
   );
 }
 
+
+.position-relative {
+  position: relative;
+}
+
+.scroll-down-link {
+  position: absolute;
+  bottom: 15vh; /* raise arrow compared to 5vh or 10vh if you like */
+  left: 50%;
+  transform: translateX(-50%);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* remove any default box shadow, use drop-shadow for a shape-based glow */
+.scroll-down-link:hover svg {
+  filter: 
+    drop-shadow(0 0 15px rgba(255, 255, 255, 0.8))
+    drop-shadow(0 0 25px rgba(255, 255, 255, 0.6))
+    drop-shadow(0 0 35px rgba(255, 255, 255, 0.4));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+/**************************************************************************\
+
 /* waves section */
 .releases-section {
   position: relative;
@@ -154,7 +183,7 @@ body {
 /* container that holds Releases title & album scroller */
 .releases-container {
   padding-top: 50vh; /* pushes the text below the waves */
-  padding-bottom: 3rem;
+  padding-bottom: 50vh; 
   display: flex;
   flex-direction: column;
   align-items: center;
