@@ -66,14 +66,26 @@ function applyRandomWave(waveElement) {
 }
 
 function randomizeWaves() {
-  const wave1 = document.querySelector('.wave');
-  const wave2 = document.querySelector('.wave2');
-
-  if (!wave1 || !wave2) return;
-
-  applyRandomWave(wave1);
-  wave2.style.animationDuration = getComputedStyle(wave1).animationDuration;
-  wave2.style.clipPath = randomPolygon();
+  // find all .wave elements
+  const allWaves = document.querySelectorAll('.wave');
+  
+  // apply random polygon to each wave
+  allWaves.forEach(wave => {
+    applyRandomWave(wave);
+  });
+  
+  // now pair up wave2 with wave1 in top, and wave2 with wave1 in bottom
+  const waveTop1 = document.querySelector('.wave.wave-top:not(.wave2)');
+  const waveTop2 = document.querySelector('.wave.wave2.wave-top');
+  if (waveTop1 && waveTop2) {
+    waveTop2.style.animationDuration = getComputedStyle(waveTop1).animationDuration;
+  }
+  
+  const waveBottom1 = document.querySelector('.wave.wave-bottom:not(.wave2)');
+  const waveBottom2 = document.querySelector('.wave.wave2.wave-bottom');
+  if (waveBottom1 && waveBottom2) {
+    waveBottom2.style.animationDuration = getComputedStyle(waveBottom1).animationDuration;
+  }
 }
 
 // run once on load

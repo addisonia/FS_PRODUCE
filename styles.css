@@ -123,6 +123,32 @@ body {
 }
 
 
+/* top waves positioning */
+.wave-top {
+  top: -30vh;
+  bottom: auto;
+  /* same gradient you already use */
+}
+
+/* bottom waves */
+.wave-bottom {
+  top: auto;
+  bottom: -30vh;
+  /* invert the gradient so it's dark near the bottom,
+     which helps it stand out against the #f0f0f0 background */
+  background: linear-gradient(
+    to top,
+    #130f17 0%,
+    #130f17 45%,
+    #f0f0f0 100%
+  );
+  /* flip wave vertically */
+  transform: rotate(180deg);
+  transform-origin: center;
+}
+
+
+
 /***************************************************************************\
 
 /* container that holds Releases title & album scroller */
