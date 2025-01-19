@@ -2,116 +2,152 @@
 
 /* reset defaults */
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #130f17;
-    min-height: 100vh;
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
-  
-  /* hero section */
-  .hero-section {
-    position: relative;
-    height: 100vh;
-    background: linear-gradient(
-      to bottom,
-      #130f17 0%,
-      #130f17 100%
-    );
-  }
-  
+  margin: 0;
+  padding: 0;
+  background-color: #130f17;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
 
-/* shredded overlay on top of releases section */
+/* hero section */
+.hero-section {
+  position: relative;
+  height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    #130f17 0%,
+    #130f17 100%
+  );
+}
+
+/* waves section */
 .releases-section {
-    position: relative;
-    background-color: #f0f0f0;
-    min-height: 100vh;
-    overflow: hidden; /* keep waves contained */
-  }
-  
-  /* both waves share basic styling */
-  .wave {
-    position: absolute;
-    top: -30vh;
-    left: 0;
-    width: 200%;
-    height: 500px;
-    background: linear-gradient(
-        to bottom,
-        #f0f0f0 0%,
-        #f0f0f0 55%,
-        #130f17 100%
-      );
-    animation: waveFlow var(--wave-speed, 8s) linear infinite;
-    z-index: 2;
-  }
-  
-  /* animate from 0 to -100% for a full pass */
-  @keyframes waveFlow {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
-  }
-  
-  
-  /* second wave is offset half the animation for a continuous flow */
-  .wave2 {
-    animation-delay: calc(var(--wave-speed, 8s) / 2);
-  }
-  
+  position: relative;
+  background-color: #f0f0f0;
+  min-height: 100vh;
+  overflow: hidden; /* keep waves contained */
+}
 
-  
-  
-  
-  
-  
-  /* main title styling */
-  .main-title {
-    font-family: 'NotoSansMono', sans-serif;
-    color: #f0f0f0;
-    font-size: 15vw;
-    width: 90%;
-    margin: 0 auto;
-    position: relative;
-    z-index: 2;
-    white-space: nowrap;
-    transform: translateY(-15vh);
+/* wave styles (unchanged) */
+.wave {
+  position: absolute;
+  top: -30vh;
+  left: 0;
+  width: 200%;
+  height: 500px;
+  background: linear-gradient(
+    to bottom,
+    #f0f0f0 0%,
+    #f0f0f0 55%,
+    #130f17 100%
+  );
+  animation: waveFlow var(--wave-speed, 8s) linear infinite;
+  z-index: 2;
+}
+
+@keyframes waveFlow {
+  0% {
+    transform: translateX(0);
   }
-  
-  /* section title */
-  .section-title {
-    font-family: 'NotoSansMono', sans-serif;
-    color: #130f17;
-    font-size: 8vw;
+  100% {
+    transform: translateX(-100%);
   }
-  
-  /* gradient overlay at the bottom of hero section */
-  .gradient-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 5%;
-    background: linear-gradient(
-      0deg,
-      rgba(240, 240, 240, 1) 0%,
-      rgba(240, 240, 240, 0.95) 5%,
-      rgba(240, 240, 240, 0.85) 10%,
-      rgba(240, 240, 240, 0.7) 15%,
-      rgba(240, 240, 240, 0.5) 20%,
-      rgba(240, 240, 240, 0.3) 30%,
-      rgba(240, 240, 240, 0.15) 45%,
-      rgba(240, 240, 240, 0.05) 80%,
-      rgba(240, 240, 240, 0) 100%
-    );
-    z-index: 1;
-  }
-  
-  .vh-90 {
-    height: 90vh;
-  }
-  
+}
+
+.wave2 {
+  animation-delay: calc(var(--wave-speed, 8s) / 2);
+}
+
+
+.album-scroller {
+  white-space: nowrap;
+  overflow-x: auto;
+  width: 90%;
+  padding: 1rem 0;
+  box-sizing: border-box;
+}
+
+.album-item {
+  display: inline-block;
+  width: 300px;
+  height: 380px;
+  margin-right: 1rem;
+}
+
+/* main title styling */
+.main-title {
+  font-family: 'NotoSansMono', sans-serif;
+  color: #f0f0f0;
+  font-size: 15vw;
+  width: 90%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  white-space: nowrap;
+  transform: translateY(-15vh);
+}
+
+/* section title */
+.section-title {
+  font-family: 'NotoSansMono', sans-serif;
+  color: #130f17;
+  font-size: 8vw;
+  margin-bottom: 2rem;
+}
+
+/* gradient overlay at bottom of hero section */
+.gradient-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5%;
+  background: linear-gradient(
+    0deg,
+    rgba(240, 240, 240, 1) 0%,
+    rgba(240, 240, 240, 0.95) 5%,
+    rgba(240, 240, 240, 0.85) 10%,
+    rgba(240, 240, 240, 0.7) 15%,
+    rgba(240, 240, 240, 0.5) 20%,
+    rgba(240, 240, 240, 0.3) 30%,
+    rgba(240, 240, 240, 0.15) 45%,
+    rgba(240, 240, 240, 0.05) 80%,
+    rgba(240, 240, 240, 0) 100%
+  );
+  z-index: 1;
+}
+
+.vh-90 {
+  height: 90vh;
+}
+
+
+/***************************************************************************\
+
+/* container that holds Releases title & album scroller */
+.releases-container {
+  padding-top: 50vh; /* pushes the text below the waves */
+  padding-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: auto;
+}
+
+.album-scroller {
+  white-space: nowrap;
+  overflow-x: auto;
+  width: 90%;
+  padding: 1rem 0;
+  box-sizing: border-box;
+}
+
+.album-item {
+  display: inline-block;
+  width: 300px;
+  height: 380px;
+  margin-right: 1rem;
+}
+
